@@ -13,6 +13,14 @@ public class ReceptionistMapper {
 
     private final UserMapper userMapper;
 
+    public Receptionist toReceptionist(ReceptionistRequestDTO dto, User user) {
+        return Receptionist.builder().
+                name(dto.name()).
+                phone(dto.phone()).
+                user(user).
+                build();
+    }
+
     public ReceptionistResponseDTO toReceptionistResponseDTO(Receptionist receptionist) {
         return new ReceptionistResponseDTO(
                 receptionist.getId(),
@@ -20,13 +28,5 @@ public class ReceptionistMapper {
                 receptionist.getPhone(),
                 userMapper.toUserSummaryDTO(receptionist.getUser())
         );
-    }
-
-    public Receptionist toReceptionist(ReceptionistRequestDTO dto, User user) {
-        return Receptionist.builder().
-                name(dto.name()).
-                phone(dto.phone()).
-                user(user).
-                build();
     }
 }

@@ -16,7 +16,5 @@ public record AddressDTO(
 
         @NotBlank
         @Size(max = 10)
-        String zipCode,
-
-        String complement
+        String zipCode
 ) {}

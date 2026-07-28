@@ -14,6 +14,15 @@ import java.util.stream.Collectors;
 @Component
 public class UserMapper {
 
+    public User toUser(UserRequestDTO dto, Set<Role> roles, String encodedPassword) {
+        return User.builder()
+                .email(dto.email())
+                .enabled(true)
+                .roles(roles)
+                .password(encodedPassword)
+                .build();
+    }
+
     public UserResponseDTO toUserResponseDTO(User user) {
         Set<RoleType> roles = user.getRoles().stream()
                 .map(Role::getName)
@@ -25,15 +34,6 @@ public class UserMapper {
                 user.isEnabled(),
                 roles
         );
-    }
-
-    public User toUser(UserRequestDTO dto, Set<Role> roles, String encodedPassword) {
-        return User.builder()
-                .email(dto.email())
-                .enabled(true)
-                .roles(roles)
-                .password(encodedPassword)
-                .build();
     }
 
     public UserSummaryDTO toUserSummaryDTO(User user) {
