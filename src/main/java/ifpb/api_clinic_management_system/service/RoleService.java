@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -16,7 +17,11 @@ public class RoleService {
 
     private final RoleRepository roleRepository;
 
-    public Set<Role> findAllById(Set<Long> roleIds) {
+    public List<Role> findAllRoles() {
+        return roleRepository.findAll();
+    }
+
+    public Set<Role> findAllRolesById(Set<Long> roleIds) {
         return new HashSet<>(roleRepository.findAllById(roleIds));
     }
 }

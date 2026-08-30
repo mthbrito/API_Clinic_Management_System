@@ -22,6 +22,10 @@ public class JwtService {
     @Value("${jwt.expiration}")
     private Long expiration;
 
+    public long getExpirationMs() {
+        return expiration;
+    }
+
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder()
                 .subject(userDetails.getUsername())
