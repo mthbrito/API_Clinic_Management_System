@@ -94,7 +94,7 @@ public class UserService {
     }
 
     private Set<Role> fetchRoles(Set<Long> roleIds) {
-        Set<Role> roles = new HashSet<>(roleService.findAllById(roleIds));
+        Set<Role> roles = new HashSet<>(roleService.findAllRolesById(roleIds));
         if (roles.size() != roleIds.size()) {
             log.warn("Role lookup mismatch: requested={}, found={}", roleIds.size(), roles.size());
             throw new EntityNotFoundException("One or more roles not found");

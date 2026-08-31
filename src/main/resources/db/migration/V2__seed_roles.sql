@@ -1,0 +1,4 @@
+INSERT INTO TB_ROLE (name)
+VALUES ('ROLE_ADMIN'),
+       ('ROLE_DOCTOR'),
+       ('ROLE_RECEPTIONIST');
